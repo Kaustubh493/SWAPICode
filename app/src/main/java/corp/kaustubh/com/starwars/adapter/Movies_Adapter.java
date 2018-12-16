@@ -1,4 +1,4 @@
-package corp.kaustubh.com.starwars;
+package corp.kaustubh.com.starwars.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,6 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+
+import corp.kaustubh.com.starwars.model.Movies_model;
+import corp.kaustubh.com.starwars.R;
 
 public class Movies_Adapter extends RecyclerView.Adapter<Movies_Adapter.ViewHolder> {
     private List<Movies_model> movies_dataset;

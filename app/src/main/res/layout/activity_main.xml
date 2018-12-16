@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/vertical_margin"
     android:paddingEnd="@dimen/horizontal_margin"
     android:paddingBottom="@dimen/vertical_margin"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
