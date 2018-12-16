@@ -1,12 +1,12 @@
-package corp.kaustubh.com.starwars;
+package corp.kaustubh.com.starwars.activities;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import corp.kaustubh.com.starwars.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

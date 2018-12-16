@@ -1,11 +1,12 @@
-package corp.kaustubh.com.starwars;
+package corp.kaustubh.com.starwars.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public abstract class Movies_model {
+public class Movies_model implements Serializable {
 
     @Expose
     @SerializedName("url")
@@ -49,6 +50,23 @@ public abstract class Movies_model {
     @Expose
     @SerializedName("title")
     private String title;
+
+    public Movies_model(String url, String edited, String created, List<String> species, List<String> vehicles, List<String> starships, List<String> planets, List<String> characters, String releaseDate, String producer, String director, String openingCrawl, int episodeId, String title) {
+        this.url = url;
+        this.edited = edited;
+        this.created = created;
+        this.species = species;
+        this.vehicles = vehicles;
+        this.starships = starships;
+        this.planets = planets;
+        this.characters = characters;
+        this.releaseDate = releaseDate;
+        this.producer = producer;
+        this.director = director;
+        this.openingCrawl = openingCrawl;
+        this.episodeId = episodeId;
+        this.title = title;
+    }
 
     public String getUrl() {
         return url;
@@ -161,4 +179,6 @@ public abstract class Movies_model {
     public void setTitle(String title) {
         this.title = title;
     }
+
+
 }

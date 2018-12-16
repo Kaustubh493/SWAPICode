@@ -1,4 +1,4 @@
-package corp.kaustubh.com.starwars;
+package corp.kaustubh.com.starwars.activities;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
+
+import corp.kaustubh.com.starwars.R;
 
 public class Splash extends AppCompatActivity {
     MediaPlayer mediaPlayer;

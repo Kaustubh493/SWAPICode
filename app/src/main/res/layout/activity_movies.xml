@@ -5,12 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".Movies">
+    tools:context=".activities.Movies">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerMovie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        />
+        android:scrollbars="vertical" />
 </LinearLayout>
