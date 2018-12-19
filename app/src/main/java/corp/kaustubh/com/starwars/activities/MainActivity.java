@@ -10,8 +10,6 @@ import corp.kaustubh.com.starwars.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btn_movies, btn_characters, btn_vehicles, btn_planets;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,10 +18,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void INIT() {
-        btn_movies = findViewById(R.id.btn_movies);
-        btn_characters = findViewById(R.id.btn_characters);
-        btn_vehicles = findViewById(R.id.btn_vehicles);
-        btn_planets = findViewById(R.id.btn_planets);
+        Button btn_movies = findViewById(R.id.btn_movies);
+        Button btn_characters = findViewById(R.id.btn_characters);
+        Button btn_vehicles = findViewById(R.id.btn_vehicles);
+        Button btn_planets = findViewById(R.id.btn_planets);
         btn_movies.setOnClickListener(this);
         btn_characters.setOnClickListener(this);
         btn_vehicles.setOnClickListener(this);
@@ -32,29 +30,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        Intent intent;
+        Intent intent = null;
         switch (view.getId()) {
 
             case R.id.btn_movies:
-                intent=new Intent(MainActivity.this,Movies.class);
-                startActivity(intent);
+                intent = new Intent(MainActivity.this, Movies.class);
+
                 break;
 
             case R.id.btn_characters:
-                intent=new Intent(MainActivity.this,Characters.class);
-                startActivity(intent);
+                intent = new Intent(MainActivity.this, Characters.class);
+
                 break;
 
             case R.id.btn_vehicles:
-                intent=new Intent(MainActivity.this,Vehicles.class);
-                startActivity(intent);
+                intent = new Intent(MainActivity.this, Vehicles.class);
+
                 break;
 
             case R.id.btn_planets:
-                intent=new Intent(MainActivity.this,Planets.class);
-                startActivity(intent);
+                intent = new Intent(MainActivity.this, Planets.class);
+
                 break;
         }
+        startActivity(intent);
     }
 
 

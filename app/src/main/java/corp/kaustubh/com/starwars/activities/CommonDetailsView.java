@@ -17,27 +17,23 @@ import corp.kaustubh.com.starwars.model.MovieModel;
 import corp.kaustubh.com.starwars.utils.Config;
 
 public class CommonDetailsView extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
-    private YouTubePlayerView youTubePlayerView;
-    private Bundle bundle;
     private ArrayList<MovieModel> movieModels;
-    private static final String TAG = "CommonDetailsView";
+    private final String TAG = "CommonDetailsView";
     private String VIDEO_CODE;
-    private TextView txtTitle;
-    private TextView txtReleasedDate;
-    private TextView txtOpenCrawl;
-    private TextView txtDirector;
-    private TextView txtProducer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_common__details__view);
-        bundle = getIntent().getExtras();
-        movieModels = bundle.getParcelableArrayList("moivedata");
+        Bundle bundle = getIntent().getExtras();
+
         try {
-            VIDEO_CODE = bundle.getString(getResources().getString(R.string.video_key));
+            if (bundle != null) {
+                movieModels = bundle.getParcelableArrayList("moivedata");
+                VIDEO_CODE = bundle.getString(getResources().getString(R.string.video_key));
+            }
             Log.e(TAG, "onCreate: " + VIDEO_CODE);
-            youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_view_movies);
+            YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_view_movies);
             youTubePlayerView.initialize(Config.API_KEY, this);
             init();
         } catch (Resources.NotFoundException e) {
@@ -46,11 +42,11 @@ public class CommonDetailsView extends YouTubeBaseActivity implements YouTubePla
     }
 
     private void init() {
-        txtTitle = (TextView) findViewById(R.id.txt_Title);
-        txtDirector = (TextView) findViewById(R.id.txt_director);
-        txtProducer = (TextView) findViewById(R.id.txt_Producer);
-        txtOpenCrawl = (TextView) findViewById(R.id.txt_Opening_Crawl);
-        txtReleasedDate = (TextView) findViewById(R.id.txt_Release_Date);
+        TextView txtTitle = findViewById(R.id.txt_Title);
+        TextView txtDirector = findViewById(R.id.txt_director);
+        TextView txtProducer = findViewById(R.id.txt_Producer);
+        TextView txtOpenCrawl = findViewById(R.id.txt_Opening_Crawl);
+        TextView txtReleasedDate = findViewById(R.id.txt_Release_Date);
 
         txtTitle.setText(movieModels.get(0).getTitle());
         txtOpenCrawl.setText(movieModels.get(0).getOpeningCrawl());

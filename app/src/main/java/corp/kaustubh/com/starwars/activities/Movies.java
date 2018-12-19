@@ -34,8 +34,7 @@ import corp.kaustubh.com.starwars.utils.Utils;
 public class Movies extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
-    private final int RETRYTIME = 90000;
-    private static final String TAG = "Movies";
+    private final String TAG = "Movies";
     private ProgressDialog progressDialog;
 
     @Override
@@ -58,9 +57,9 @@ public class Movies extends AppCompatActivity {
                         JSONArray jsonArray = response.getJSONArray("results");
                         GsonBuilder gsonBuilder = new GsonBuilder();
                         Gson gson = gsonBuilder.create();
-                        List<MovieModel> movies_model = gson.fromJson(jsonArray.toString(), new TypeToken<List<MovieModel>>() {
+                        List<MovieModel> moviesModel = gson.fromJson(jsonArray.toString(), new TypeToken<List<MovieModel>>() {
                         }.getType());
-                        mAdapter = new MoviesAdapter(movies_model, Movies.this);
+                        mAdapter = new MoviesAdapter(moviesModel, Movies.this);
                         recyclerView.setAdapter(mAdapter);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -86,7 +85,7 @@ public class Movies extends AppCompatActivity {
 
                 @Override
                 public Request<?> setRetryPolicy(RetryPolicy retryPolicy) {
-                    retryPolicy = new DefaultRetryPolicy(RETRYTIME, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                    retryPolicy = new DefaultRetryPolicy(60000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                     return super.setRetryPolicy(retryPolicy);
                 }
             };
