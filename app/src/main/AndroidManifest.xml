@@ -28,8 +28,8 @@
         <activity android:name=".activities.Characters" />
         <activity android:name=".activities.Vehicles" />
         <activity android:name=".activities.Planets" />
-        <activity android:name=".activities.Movies" />
-        <activity android:name=".activities.Common_Details_View"></activity>
+        <activity android:name=".activities.Movies" android:label="@string/movies_list_title" />
+        <activity android:name=".activities.CommonDetailsView"></activity>
     </application>
 
 </manifest>

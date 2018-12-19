@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/vertical_margin"
     android:paddingEnd="@dimen/horizontal_margin"
     android:paddingBottom="@dimen/vertical_margin"
+    android:background="@android:color/black"
     tools:context=".activities.MainActivity">
 
     <ImageView
