@@ -1,12 +1,12 @@
 package corp.kaustubh.com.starwars.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -17,7 +17,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,9 +30,8 @@ import corp.kaustubh.com.starwars.rest.ApiClient;
 import corp.kaustubh.com.starwars.rest.NukeSSLCerts;
 import corp.kaustubh.com.starwars.utils.Utils;
 
-public class Movies extends AppCompatActivity {
+public class Movies extends AppCompatActivity implements MoviesAdapter.Listener {
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
     private final String TAG = "Movies";
     private ProgressDialog progressDialog;
 
@@ -55,12 +53,7 @@ public class Movies extends AppCompatActivity {
                     try {
                         disableProgressDialog();
                         JSONArray jsonArray = response.getJSONArray("results");
-                        GsonBuilder gsonBuilder = new GsonBuilder();
-                        Gson gson = gsonBuilder.create();
-                        List<MovieModel> moviesModel = gson.fromJson(jsonArray.toString(), new TypeToken<List<MovieModel>>() {
-                        }.getType());
-                        mAdapter = new MoviesAdapter(moviesModel, Movies.this);
-                        recyclerView.setAdapter(mAdapter);
+                        setAdapter(jsonArray);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -74,7 +67,6 @@ public class Movies extends AppCompatActivity {
             }) {
                 @Override
                 protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-                    Log.e(TAG, "parseNetworkResponse: " + response.toString());
                     return super.parseNetworkResponse(response);
                 }
 
@@ -97,14 +89,37 @@ public class Movies extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-    private void enableProgressDialog(){progressDialog=new ProgressDialog(this);
-    progressDialog.setTitle("Loading");
-    progressDialog.setMessage("Please Wait...");
-    progressDialog.show();}
-    private void disableProgressDialog(){
+
+    private void enableProgressDialog() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.show();
+    }
+
+    private void disableProgressDialog() {
         if (progressDialog.isShowing())
             progressDialog.dismiss();
     }
 
+
+    @Override
+    public void onChildClick(MovieModel movieModel) {
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("movieData", movieModel);
+        Intent intent = new Intent(Movies.this, CommonDetailsView.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    private void setAdapter(JSONArray jsonArray) {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson gson = gsonBuilder.create();
+        List<MovieModel> moviesModel = gson.fromJson(jsonArray.toString(), new TypeToken<List<MovieModel>>() {
+        }.getType());
+        RecyclerView.Adapter mAdapter = new MoviesAdapter(moviesModel, this);
+        recyclerView.setAdapter(mAdapter);
+    }
 
 }
