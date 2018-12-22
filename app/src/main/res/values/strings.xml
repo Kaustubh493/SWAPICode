@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">Star Wars</string>
     <string name="error_string">There was an error initializing the YouTube Player</string>
+    <string name="video_key">video_key</string>
+    <string name="new_hope">A New Hope</string>
+    <string name="AOC">Attack of the Clones</string>
+    <string name="phantom_menaced">The Phantom Menace</string>
+    <string name="revenge_of_sith">Revenge of the Sith</string>
+    <string name="return_of_jedi">Return of the Jedi</string>
+    <string name="empire_strikes_back">The Empire Strikes Back</string>
+    <string name="the_force_awakens">The Force Awakens</string>
+    <string name="movies_list_title">Star Wars Movies</string>
+    <string name="released_date">Released Date :</string>
+    <string name="producer">Producer :</string>
+    <string name="director">Director :</string>
+    <string name="opening_crawl">Opening Crawl :</string>
+    <string name="star_wars_logo">Star Wars Logo</string>
+    <string name="movies">Movies</string>
 </resources>

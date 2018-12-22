@@ -1,16 +1,12 @@
 package corp.kaustubh.com.starwars.activities;
 
-import android.graphics.Movie;
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
@@ -21,37 +17,29 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import corp.kaustubh.com.starwars.R;
-import corp.kaustubh.com.starwars.adapter.Movies_Adapter;
-import corp.kaustubh.com.starwars.model.Movies_model;
+import corp.kaustubh.com.starwars.adapter.MoviesAdapter;
+import corp.kaustubh.com.starwars.model.MovieModel;
 import corp.kaustubh.com.starwars.rest.ApiClient;
 import corp.kaustubh.com.starwars.rest.NukeSSLCerts;
 import corp.kaustubh.com.starwars.utils.Utils;
 
-public class Movies extends AppCompatActivity {
+public class Movies extends AppCompatActivity implements MoviesAdapter.Listener {
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-    private static final int RETRYTIME = 90000;
-    private static final String TAG = "Movies";
+    private final String TAG = "Movies";
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
         recyclerView = findViewById(R.id.recyclerMovie);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-
-        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         getMovies();
     }
@@ -63,14 +51,9 @@ public class Movies extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
-                        JSONObject jsonObject=response;
-                        Log.e(TAG, "onResponse: "+jsonObject.toString() );
-                        JSONArray jsonArray=response.getJSONArray("results");
-                        GsonBuilder gsonBuilder=new GsonBuilder();
-                        Gson gson=gsonBuilder.create();
-                        List<Movies_model> movies_model=gson.fromJson(jsonArray.toString(),new TypeToken<List<Movies_model>>(){}.getType());
-                        mAdapter=new Movies_Adapter(movies_model,Movies.this);
-                        recyclerView.setAdapter(mAdapter);
+                        disableProgressDialog();
+                        JSONArray jsonArray = response.getJSONArray("results");
+                        setAdapter(jsonArray);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -78,13 +61,12 @@ public class Movies extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
+                    Log.e(TAG, "onErrorResponse: " + error.toString());
                 }
 
             }) {
                 @Override
                 protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
-                    Log.e(TAG, "parseNetworkResponse: " + response.toString());
                     return super.parseNetworkResponse(response);
                 }
 
@@ -95,17 +77,49 @@ public class Movies extends AppCompatActivity {
 
                 @Override
                 public Request<?> setRetryPolicy(RetryPolicy retryPolicy) {
-                    retryPolicy = new DefaultRetryPolicy(RETRYTIME, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                    retryPolicy = new DefaultRetryPolicy(60000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
                     return super.setRetryPolicy(retryPolicy);
                 }
             };
             NukeSSLCerts.nuke();
             jsonMoviesRequest.setShouldCache(false);
             ApiClient.getInstance().addToRequestqueue(jsonMoviesRequest);
+            enableProgressDialog();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    private void enableProgressDialog() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading");
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.show();
+    }
+
+    private void disableProgressDialog() {
+        if (progressDialog.isShowing())
+            progressDialog.dismiss();
+    }
+
+
+    @Override
+    public void onChildClick(MovieModel movieModel) {
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("movieData", movieModel);
+        Intent intent = new Intent(Movies.this, CommonDetailsView.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    private void setAdapter(JSONArray jsonArray) {
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        Gson gson = gsonBuilder.create();
+        List<MovieModel> moviesModel = gson.fromJson(jsonArray.toString(), new TypeToken<List<MovieModel>>() {
+        }.getType());
+        RecyclerView.Adapter mAdapter = new MoviesAdapter(moviesModel, this);
+        recyclerView.setAdapter(mAdapter);
+    }
 
 }
