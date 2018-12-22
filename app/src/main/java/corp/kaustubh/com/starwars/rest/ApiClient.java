@@ -18,7 +18,7 @@ public class ApiClient extends Application {
         super.onCreate();
         mInstance=this;
     }
-    public RequestQueue getRequestQueue(){
+    private RequestQueue getRequestQueue(){
         if (requestQueue==null){
             requestQueue=Volley.newRequestQueue(getApplicationContext());
         }

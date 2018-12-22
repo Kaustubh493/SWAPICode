@@ -14,7 +14,7 @@ import corp.kaustubh.com.starwars.model.MovieModel;
 import corp.kaustubh.com.starwars.utils.Config;
 
 public class CommonDetailsView extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
-    MovieModel movieModel;
+    private MovieModel movieModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

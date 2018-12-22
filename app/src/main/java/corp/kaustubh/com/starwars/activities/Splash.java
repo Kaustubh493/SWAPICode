@@ -11,34 +11,34 @@ import corp.kaustubh.com.starwars.R;
 
 public class Splash extends AppCompatActivity {
     MediaPlayer mediaPlayer;
-    private static int splashInterval = 4000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        setStatusBarTranslucent(true);
+        setStatusBarTranslucent();
         setContentView(R.layout.activity_splash);
         mediaPlayer = MediaPlayer.create(Splash.this, R.raw.saberon);
         mediaPlayer.start();
+        int splashInterval = 4000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // TODO Auto-generated method stub
+                /* TODO Auto-generated method stub */
                 Intent i = new Intent(Splash.this, MainActivity.class);
                 startActivity(i);
                 this.finish();
             }
 
             private void finish() {
-                // TODO Auto-generated method stub
+                /* TODO Auto-generated method stub */
 
             }
         }, splashInterval);
     }
 
-    protected void setStatusBarTranslucent(boolean makeTranslucent) {
-        if (makeTranslucent) {
+    protected void setStatusBarTranslucent() {
+        if (true) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         } else {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

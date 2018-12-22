@@ -1,6 +1,5 @@
 package corp.kaustubh.com.starwars.adapter;
 
-import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -71,6 +70,7 @@ MovieModel movieModel = movies.get(position);
             txtReleasedDate = v.findViewById(R.id.txt_Release_Date);
             txtMovieNav = v.findViewById(R.id.txt_movie_nav);
         }
+
     }
 
     public interface Listener {

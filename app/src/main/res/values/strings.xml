@@ -10,4 +10,10 @@
     <string name="empire_strikes_back">The Empire Strikes Back</string>
     <string name="the_force_awakens">The Force Awakens</string>
     <string name="movies_list_title">Star Wars Movies</string>
+    <string name="released_date">Released Date :</string>
+    <string name="producer">Producer :</string>
+    <string name="director">Director :</string>
+    <string name="opening_crawl">Opening Crawl :</string>
+    <string name="star_wars_logo">Star Wars Logo</string>
+    <string name="movies">Movies</string>
 </resources>

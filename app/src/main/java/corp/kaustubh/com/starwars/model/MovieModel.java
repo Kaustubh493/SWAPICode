@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MovieModel implements Serializable,Parcelable {
 
-    private int id;
+    int id;
     @Expose
     @SerializedName("url")
     private String url;
@@ -52,23 +52,6 @@ public class MovieModel implements Serializable,Parcelable {
     @Expose
     @SerializedName("title")
     private String title;
-
-    public MovieModel(String url, String edited, String created, List<String> species, List<String> vehicles, List<String> starships, List<String> planets, List<String> characters, String releaseDate, String producer, String director, String openingCrawl, int episodeId, String title) {
-        this.url = url;
-        this.edited = edited;
-        this.created = created;
-        this.species = species;
-        this.vehicles = vehicles;
-        this.starships = starships;
-        this.planets = planets;
-        this.characters = characters;
-        this.releaseDate = releaseDate;
-        this.producer = producer;
-        this.director = director;
-        this.openingCrawl = openingCrawl;
-        this.episodeId = episodeId;
-        this.title = title;
-    }
 
     public String getUrl() {
         return url;
@@ -207,7 +190,7 @@ public class MovieModel implements Serializable,Parcelable {
         dest.writeString(this.title);
     }
 
-    protected MovieModel(Parcel in) {
+    private MovieModel(Parcel in) {
         this.id = in.readInt();
         this.url = in.readString();
         this.edited = in.readString();

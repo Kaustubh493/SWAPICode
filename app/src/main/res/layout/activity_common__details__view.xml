@@ -52,7 +52,7 @@
                 android:layout_margin="2dp"
                 android:padding="2dp"
                 android:layout_weight="1"
-                android:text="Opening Crawl : "
+                android:text="@string/opening_crawl"
                 android:textColor="@color/cardview_light_background" />
 
             <TextView
@@ -73,6 +73,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:orientation="horizontal"
+            android:baselineAligned="false"
             android:weightSum="2">
 
             <LinearLayout
@@ -90,7 +91,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:padding="2dp"
-                    android:text="Director :"
+                    android:text="@string/director"
                     android:textColor="@color/cardview_light_background" />
 
                 <TextView
@@ -99,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:padding="2dp"
-                    android:text="Producer :"
+                    android:text="@string/producer"
                     android:textColor="@color/cardview_light_background" />
 
                 <TextView
@@ -108,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
                     android:padding="2dp"
-                    android:text="Released Date :"
+                    android:text="@string/released_date"
                     android:textColor="@color/cardview_light_background" />
 
             </LinearLayout>
