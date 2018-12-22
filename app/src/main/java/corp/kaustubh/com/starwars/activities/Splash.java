@@ -24,7 +24,7 @@ public class Splash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                /* TODO Auto-generated method stub */
+                // TODO Auto-generated method stub
                 Intent i = new Intent(Splash.this, MainActivity.class);
                 startActivity(i);
                 this.finish();
