@@ -1,17 +1,0 @@
-
-Fsquid:S16598"*Declare "txt_Producer" on a separate line.(¼”Œ£ûÿÿÿÿ
-Ksquid:S16598"/Declare "txt_Released_Date" on a separate line.(¼”Œ£ûÿÿÿÿ
-Gsquid:S16598"+Declare "txt_movie_nav" on a separate line.(¼”Œ£ûÿÿÿÿ
-.squid:S21766"Rename this class.(Â×Öúÿÿÿÿ
-ˆ"squid:ClassVariableVisibilityCheck8"UMake txt_Title a static final constant or non-public and provide accessors if needed.(¼”Œ£ûÿÿÿÿ
-‹"squid:ClassVariableVisibilityCheck8"XMake txt_Producer a static final constant or non-public and provide accessors if needed.(¼”Œ£ûÿÿÿÿ
-"squid:ClassVariableVisibilityCheck8"]Make txt_Released_Date a static final constant or non-public and provide accessors if needed.(¼”Œ£ûÿÿÿÿ
-Œ"squid:ClassVariableVisibilityCheck8"YMake txt_movie_nav a static final constant or non-public and provide accessors if needed.(¼”Œ£ûÿÿÿÿ
-…"squid:ClassVariableVisibilityCheck9"RMake layout a static final constant or non-public and provide accessors if needed.(¢çÅÔüÿÿÿÿ
-jsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(øğÂÏûÿÿÿÿ
-qsquid:S00116"YRename this field "movies_dataset" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿ÈÌç
-qsquid:S001168"TRename this field "txt_Title" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼”Œ£ûÿÿÿÿ
-tsquid:S001168"WRename this field "txt_Producer" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼”Œ£ûÿÿÿÿ
-ysquid:S001168"\Rename this field "txt_Released_Date" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼”Œ£ûÿÿÿÿ
-usquid:S001168"XRename this field "txt_movie_nav" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼”Œ£ûÿÿÿÿ
-nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡ÁĞ•ûÿÿÿÿ

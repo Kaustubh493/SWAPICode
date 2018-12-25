@@ -5,18 +5,16 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import corp.kaustubh.com.starwars.model.Movies_model;
-
 public class MoviesResults {
     @Expose
     @SerializedName("results")
-    public List<Movies_model> Results = null;
+    public List<MovieModel> Results = null;
 
-    public List<Movies_model> getResults() {
+    public List<MovieModel> getResults() {
         return Results;
     }
 
-    public void setResults(List<Movies_model> results) {
+    public void setResults(List<MovieModel> results) {
         Results = results;
     }
 }

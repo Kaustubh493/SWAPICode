@@ -1,44 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    android:paddingStart="@dimen/horizontal_margin"
-    android:paddingTop="@dimen/vertical_margin"
-    android:paddingEnd="@dimen/horizontal_margin"
-    android:paddingBottom="@dimen/vertical_margin"
     android:background="@android:color/black"
     tools:context=".activities.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="285dp"
-        android:layout_height="114dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/logo"
-        android:contentDescription="@string/star_wars_logo" />
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/star_wars_logo"
+        android:src="@drawable/logo" />
 
-    <Button
-        android:id="@+id/btn_movies"
-        android:layout_width="300dp"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerMovie"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical|center_horizontal|center"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/button_bg"
-        android:clickable="true"
-        android:drawablePadding="5dp"
-        android:elevation="5dp"
-        android:paddingStart="7dp"
-        android:paddingEnd="7dp"
-        android:text="@string/movies"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold|italic"
-        tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="155dp"
-        android:focusable="true" />
-
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
+        android:scrollbars="vertical"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
 </LinearLayout>

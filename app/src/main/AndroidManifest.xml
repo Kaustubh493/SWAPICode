@@ -28,7 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.Movies" android:label="@string/movies_list_title" />
         <activity android:name=".activities.CommonDetailsView"/>
     </application>
 
